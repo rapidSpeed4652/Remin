@@ -45,10 +45,6 @@ cd remin
 
 ```
 npm install
-npm install node-schedule
-npm install axios
-npm install whatsapp-web.js qrcode-terminal
-npm install dotenv
 
 ```
 
