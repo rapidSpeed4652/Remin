@@ -44,7 +44,7 @@ cd remin
 ### 2. Install dependencies
 
 ```
-npm install node.js
+npm install
 npm install node-schedule
 npm install axios
 npm install whatsapp-web.js qrcode-terminal
