@@ -16,9 +16,11 @@ const client = new Client({
     }
 });
 
-client.on('qr', qr => {
-    qrcode.generate(qr, { small: true });
-});
+if (process.env.RAILWAY_ENVIRONMENT) {
+    console.log("QR:", qr); // Railway
+} else {
+    qrcode.generate(qr, { small: true }); // Local
+}
 
 client.on('ready', () => {
     console.log('Bot is ready!');
