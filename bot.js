@@ -32,7 +32,6 @@ client.on('ready', () => {
 client.on('message', async message => {
     console.log("Message received:", message.body);
 
-    if (message.from !== message.to) return;
 
     const text = message.body.toLowerCase();
 
