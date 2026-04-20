@@ -28,42 +28,15 @@ client.on('qr', qr => {
 client.on('ready', () => {
     console.log('Bot is ready!');
 });
-
 client.on('message', async message => {
-    console.log("Message received:", message.body);
 
-
-    const text = message.body.toLowerCase();
-
-    // =========================
-    // ⏱️ REMIND IN (time)
-    // =========================
-    let match = text.match(/remind me in (\d+)\s*(second|seconds|minute|minutes|hour|hours)\s*to (.+)/);
-
-    if (match) {
-        let time = parseInt(match[1]);
-        let unit = match[2];
-        let task = match[3];
-
-        let delay = time * 1000;
-        if (unit.includes('minute')) delay *= 60;
-        if (unit.includes('hour')) delay *= 3600;
-
-        message.reply(`Got it. I’ll remind you to "${task}" in ${time} ${unit}`);
-
-        setTimeout(async () => {
-            try {
-                await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-                    chat_id: CHAT_ID,
-                    text: `⏰ Reminder: ${task}`
-                });
-            } catch (err) {
-                console.error("Telegram error:", err.message);
-            }
-        }, delay);
-
-        return;
-    }
+    console.log("----- NEW MESSAGE -----");
+    console.log("Body:", message.body);
+    console.log("From:", message.from);
+    console.log("To:", message.to);
+    console.log("FromMe:", message.fromMe);
+    console.log("IsGroup:", message.from.includes('@g.us'));
+});
 
     // =========================
     // 🕒 REMIND AT (exact time)
