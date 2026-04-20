@@ -29,7 +29,7 @@ client.on('ready', () => {
     console.log('Bot is ready!');
 });
 
-client.on('message_create', async message => {
+client.on('message', async message => {
     console.log("Message received:", message.body);
 
     if (!message.fromMe) return;
