@@ -30,6 +30,7 @@ client.on('ready', () => {
 });
 
 client.on('message_create', async message => {
+    console.log("Message received:", message.body);
 
     if (!message.fromMe) return;
 
