@@ -38,49 +38,5 @@ client.on('message', async message => {
     console.log("IsGroup:", message.from.includes('@g.us'));
 });
 
-    // =========================
-    // 🕒 REMIND AT (exact time)
-    // =========================
-    match = text.match(/remind me at (\d{1,2}):(\d{2})\s*(am|pm)?\s*to (.+)/);
-
-    if (match) {
-        let hour = parseInt(match[1]);
-        let minute = parseInt(match[2]);
-        let ampm = match[3];
-        let task = match[4];
-
-        // convert to 24h
-        if (ampm === 'pm' && hour < 12) hour += 12;
-        if (ampm === 'am' && hour === 12) hour = 0;
-
-        let now = new Date();
-        let target = new Date();
-
-        target.setHours(hour, minute, 0);
-
-        // if time passed → tomorrow
-        if (target < now) {
-            target.setDate(target.getDate() + 1);
-        }
-
-        let delay = target - now;
-
-        message.reply(`Got it. I’ll remind you at ${hour}:${minute.toString().padStart(2, '0')}`);
-
-        setTimeout(async () => {
-            try {
-                await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-                    chat_id: CHAT_ID,
-                    text: `⏰ Reminder: ${task}`
-                });
-            } catch (err) {
-                console.error("Telegram error:", err.message);
-            }
-        }, delay);
-
-        return;
-    }
-
-});
 
 client.initialize();
