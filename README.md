@@ -140,9 +140,9 @@ remind me at 7:30 pm to join class
 
 ---
 
-## ☁️ Deployment on Cloud (Optional)
+## ☁️ Deployment on Cloud (Removed)
 
-You can deploy this bot on platforms like Railway for 24/7 usage.
+You cannot deploy this app on cloud platforms. This can change if anyone can contribute to add it.
 
 ---
 
