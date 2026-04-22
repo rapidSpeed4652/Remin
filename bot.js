@@ -31,6 +31,7 @@ client.on('ready', () => {
 client.on('message', async message => {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log("----- NEW MESSAGE -----");
     console.log("Body:", message.body);
     console.log("From:", message.from);
@@ -40,6 +41,9 @@ client.on('message', async message => {
 });
 =======
     if (message.from !== message.to) return;
+=======
+    if (!message.fromMe) return;
+>>>>>>> parent of 68d8e8f (fixed messages vulnerability)
 
     const text = message.body.toLowerCase();
 
